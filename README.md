@@ -43,10 +43,14 @@ gulp-ng-templates ([options](#options))
 
 ### options
 
-#### path - {function} (default: not a change)
+#### path - {function}
 
 > Change the path of your partials. (See the example above)
 
 #### standalone - {boolean} (default: true)
 
 > Create a new AngularJS module, instead of using an existing one.
+
+#### module - {string}
+
+> Provides the module name, by default we use 'templates'
