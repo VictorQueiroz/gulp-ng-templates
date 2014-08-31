@@ -13,6 +13,10 @@ npm install --save-dev gulp-ng-templates
 **gulpfile.js**
 
 ```js
+var gulp = require('gulp');
+(...)
+var ngTemplates = require('gulp-ng-templates');
+
 gulp.task('partials', ['clean'], function () {
 	return gulp.src(paths.partials)
 		.pipe(htmlmin({collapseWhitespace: true}))
@@ -27,13 +31,13 @@ gulp.task('partials', ['clean'], function () {
 		.pipe(rename({
 			suffix: '.min'
 		}))
-		.pipe(gulp.dest(paths.public + '/js'));
+		.pipe(gulp.dest('public/js'));
 });
 ```
 
 ## API
 
-gulp-ng-templates([options](#options))
+gulp-ng-templates ([options](#options))
 
 ----
 
