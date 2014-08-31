@@ -1,0 +1,41 @@
+{
+  "name": "gulp-ng-templates",
+  "version": "0.0.1",
+  "description": "Build all of your angular templates in just one js file using $templateCache provider",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VictorQueiroz/gulp-ng-templates"
+  },
+  "keywords": [
+    "gulpplugin",
+    "gulp",
+    "angular",
+    "angularjs",
+    "ng",
+    "html2js",
+    "templatecache"
+  ],
+  "author": {
+    "name": "Victor Queiroz",
+    "email": "victorcqueirozg@gmail.com",
+    "twitter": "victor_queirozg"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VictorQueiroz/gulp-ng-templates/issues"
+  },
+  "homepage": "https://github.com/VictorQueiroz/gulp-ng-templates",
+  "dependencies": {
+    "event-stream": "^3.1.7",
+    "gulp-concat": "^2.3.4",
+    "gulp-footer": "^1.0.5",
+    "gulp-header": "^1.0.5",
+    "gulp-util": "^3.0.1",
+    "js-string-escape": "^1.0.0",
+    "path": "^0.4.9"
+  }
+}
