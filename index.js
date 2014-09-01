@@ -14,9 +14,10 @@ function templateCache(options) {
     file.path = path.normalize(file.path);
 
     if(typeof options.path === 'function') {
-      url = path.join(options.path(file.path.replace(__dirname, '')));
+      url = path.join(options.path(file.path, file.base));
     } else {
-      url = path.join(file.path.replace(__dirname, ''));
+      url = path.join(file.path);
+      url = url.replace(file.base, '');
     };
 
     if (process.platform === 'win32') {

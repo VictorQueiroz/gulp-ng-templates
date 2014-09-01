@@ -23,8 +23,8 @@ gulp.task('partials', ['clean'], function () {
 		.pipe(ngTemplates({
 			filename: 'partials.js',
 			module: 'App/Partials',
-			path: function (path) {
-				return path.replace('/src/js/components', '').replace('/partials', '');
+			path: function (path, base) {
+				return path.replace(base, '').replace('/partials', '');
 			}
 		}))
 		.pipe(uglify())
@@ -43,9 +43,11 @@ gulp-ng-templates ([options](#options))
 
 ### options
 
-#### path - {function}
+#### path - {function} [path=file.path, file.base]
 
 > Change the path of your partials. (See the example above)
+
+> If you not set this option it will automatically replace all of the file base path with nothing.
 
 #### standalone - {boolean} (default: true)
 
