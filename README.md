@@ -69,13 +69,29 @@ gulp-ng-templates ([options](#options))
 
 > Create a new AngularJS module, instead of using an existing one.
 
-#### module - {string}
+#### module - {string} (default: templates)
 
-> Provides the module name, by default we use 'templates'
+> Provides the module name.
 
-#### engine - {string}
+#### engine - {string} (default: html)
 
 > Build the templates which are in a specific engine
 
 - html
 - jade
+
+#### header - {string}
+
+> The template header, the default value is:
+
+```js
+angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {
+```
+
+#### footer - {string}
+
+> The template footer, the default value is:
+
+```js
+}]);
+```

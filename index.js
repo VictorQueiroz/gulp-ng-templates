@@ -32,6 +32,9 @@ function templateCache(options) {
       contents = jade.render(contents);
     }
 
+    /**
+     * HTML to JavaScript
+     */
     contents = htmlJsStr(contents);
 
     file.contents = new Buffer(gutil.template(template, {
@@ -49,7 +52,9 @@ module.exports = function(options) {
     standalone: true,
     module: 'templates',
     filename: 'templates.min.js',
-    engine: 'html'
+    engine: 'html',
+    header: 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {',
+    footer: '}]);'
   };
 
   if(!options) {
@@ -65,17 +70,14 @@ module.exports = function(options) {
   }
 
   options = _.extend(defaults, options);
-
-  var templateHeader = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
-  var templateFooter = '}]);';
-
+  
   return es.pipeline(
     templateCache(options),
     concat(options.filename),
-    header(templateHeader, {
+    header(options.header, {
       module: options.module,
       standalone: (options.standalone ? ', []' : '')
     }),
-    footer(templateFooter)
+    footer(options.footer)
   );
 };
