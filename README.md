@@ -8,13 +8,10 @@ Build all of your angular templates in just one js file using $templateCache pro
 npm install --save-dev gulp-ng-templates
 ```
 
-## Example
-
-**gulpfile.js**
+## Example 1
 
 ```js
 var gulp = require('gulp');
-(...)
 var ngTemplates = require('gulp-ng-templates');
 
 gulp.task('partials', ['clean'], function () {
@@ -27,6 +24,25 @@ gulp.task('partials', ['clean'], function () {
 				return path.replace(base, '').replace('/partials', '');
 			}
 		}))
+		.pipe(uglify())
+		.pipe(rename({
+			suffix: '.min'
+		}))
+		.pipe(gulp.dest('public/js'));
+});
+```
+
+## Example 2
+
+```js
+var gulp = require('gulp');
+var ngTemplates = require('gulp-ng-templates');
+
+gulp.task('partials', ['clean'], function () {
+	return gulp.src(paths.partials)
+		.pipe(htmlmin({collapseWhitespace: true}))
+		.pipe(ngTemplates('moduleName'))
+		// .pipe(ngTemplates('moduleName', 'fileName.js'))
 		.pipe(uglify())
 		.pipe(rename({
 			suffix: '.min'
@@ -56,3 +72,10 @@ gulp-ng-templates ([options](#options))
 #### module - {string}
 
 > Provides the module name, by default we use 'templates'
+
+#### engine - {string}
+
+> Build the templates which are in a specific engine
+
+- html
+- jade

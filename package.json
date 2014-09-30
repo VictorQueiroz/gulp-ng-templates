@@ -35,7 +35,13 @@
     "gulp-footer": "^1.0.5",
     "gulp-header": "^1.0.5",
     "gulp-util": "^3.0.1",
+    "jade": "^1.7.0",
     "js-string-escape": "^1.0.0",
-    "path": "^0.4.9"
+    "path": "^0.4.9",
+    "underscore": "^1.7.0"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.4",
+    "vinyl": "^0.4.3"
   }
 }
