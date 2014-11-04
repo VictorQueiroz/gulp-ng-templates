@@ -5,7 +5,6 @@ var gutil = require('gulp-util');
 var concat = require('gulp-concat');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
-var jade = require('jade');
 var htmlJsStr = require('js-string-escape');
 
 function templateCache(options) {
@@ -28,10 +27,6 @@ function templateCache(options) {
 
     var contents = file.contents;
 
-    if(options.engine === 'jade') {
-      contents = jade.render(contents);
-    }
-
     /**
      * HTML to JavaScript
      */
@@ -52,7 +47,6 @@ module.exports = function(options) {
     standalone: true,
     module: 'templates',
     filename: 'templates.min.js',
-    engine: 'html',
     header: 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {',
     footer: '}]);'
   };

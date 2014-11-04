@@ -59,28 +59,21 @@ gulp-ng-templates ([options](#options))
 
 ### options
 
-#### path - {function} [path=file.path, file.base]
+#### `path` - {function} [path=file.path, file.base]
 
 > Change the path of your partials. (See the example above)
 
 > If you not set this option it will automatically replace all of the file base path with nothing.
 
-#### standalone - {boolean} (default: true)
+#### `standalone` - {boolean} (default: true)
 
 > Create a new AngularJS module, instead of using an existing one.
 
-#### module - {string} (default: templates)
+#### `module` - {string} (default: templates)
 
 > Provides the module name.
 
-#### engine - {string} (default: html)
-
-> Build the templates which are in a specific engine
-
-- html
-- jade
-
-#### header - {string}
+#### `header` - {string}
 
 > The template header, the default value is:
 
@@ -88,7 +81,7 @@ gulp-ng-templates ([options](#options))
 angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {
 ```
 
-#### footer - {string}
+#### `footer` - {string}
 
 > The template footer, the default value is:
 
