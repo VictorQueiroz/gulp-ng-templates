@@ -14,19 +14,15 @@ npm install --save-dev gulp-ng-templates
 var gulp = require('gulp');
 var ngTemplates = require('gulp-ng-templates');
 
-gulp.task('partials', ['clean'], function () {
-	return gulp.src(paths.partials)
+gulp.task('templates', ['clean'], function () {
+	return gulp.src(paths.templates)
 		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(ngTemplates({
-			filename: 'partials.js',
-			module: 'App/Partials',
+			filename: 'templates.js',
+			module: 'App/templates',
 			path: function (path, base) {
-				return path.replace(base, '').replace('/partials', '');
+				return path.replace(base, '').replace('/templates', '');
 			}
-		}))
-		.pipe(uglify())
-		.pipe(rename({
-			suffix: '.min'
 		}))
 		.pipe(gulp.dest('public/js'));
 });
@@ -38,15 +34,9 @@ gulp.task('partials', ['clean'], function () {
 var gulp = require('gulp');
 var ngTemplates = require('gulp-ng-templates');
 
-gulp.task('partials', ['clean'], function () {
-	return gulp.src(paths.partials)
-		.pipe(htmlmin({collapseWhitespace: true}))
+gulp.task('templates', ['clean'], function () {
+	return gulp.src(paths.templates)
 		.pipe(ngTemplates('moduleName'))
-		// .pipe(ngTemplates('moduleName', 'fileName.js'))
-		.pipe(uglify())
-		.pipe(rename({
-			suffix: '.min'
-		}))
 		.pipe(gulp.dest('public/js'));
 });
 ```
@@ -61,7 +51,7 @@ gulp-ng-templates ([options](#options))
 
 #### `path` - {function} [path=file.path, file.base]
 
-> Change the path of your partials. (See the example above)
+> Change the path of your templates. (See the example above)
 
 > If you not set this option it will automatically replace all of the file base path with nothing.
 

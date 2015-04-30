@@ -1,6 +1,6 @@
 {
   "name": "gulp-ng-templates",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Build all of your angular templates in just one js file using $templateCache provider",
   "main": "index.js",
   "scripts": {
@@ -37,8 +37,8 @@
     "gulp-util": "^3.0.1",
     "jade": "^1.7.0",
     "js-string-escape": "^1.0.0",
-    "path": "^0.4.9",
-    "underscore": "^1.7.0"
+    "lodash": "^3.7.0",
+    "path": "^0.4.9"
   },
   "devDependencies": {
     "mocha": "^1.21.4",

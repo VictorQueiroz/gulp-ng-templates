@@ -1,6 +1,6 @@
 var es = require('event-stream');
 var path = require('path');
-var _ = require('underscore');
+var _ = require('lodash');
 var gutil = require('gulp-util');
 var concat = require('gulp-concat');
 var header = require('gulp-header');
@@ -14,7 +14,7 @@ function templateCache(options) {
 
     file.path = path.normalize(file.path);
 
-    if(typeof options.path === 'function') {
+    if(_.isFunction(options.path)) {
       url = path.join(options.path(file.path, file.base));
     } else {
       url = path.join(file.path);
@@ -42,7 +42,7 @@ function templateCache(options) {
   });
 }
 
-module.exports = function(options) {
+module.exports = function(options, filename) {
   var defaults = {
     standalone: true,
     module: 'templates',
@@ -51,19 +51,19 @@ module.exports = function(options) {
     footer: '}]);'
   };
 
-  if(!options) {
+  if(_.isUndefined(options)) {
     options = {};
-  } else if(typeof options === 'string') {
+  } else if(_.isString(options)) {
     options = {
       module: options
     };
   }
 
-  if(arguments[1] && typeof arguments[1] === 'string') {
-    options.filename = arguments[1];
+  if(!_.isUndefined(filename)) {
+    options.filename = filename;
   }
 
-  options = _.extend(defaults, options);
+  options = _.extend({}, defaults, options);
   
   return es.pipeline(
     templateCache(options),
