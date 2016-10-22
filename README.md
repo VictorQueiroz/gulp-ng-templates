@@ -59,6 +59,24 @@ gulp-ng-templates ([options](#options))
 
 > Create a new AngularJS module, instead of using an existing one.
 
+#### `htmlMinifier` - {object}
+
+> Options to pass to the [html-minifier](https://github.com/kangax/html-minifier) module
+
+##### Defaults
+```js
+{
+	minimize: true,
+	removeComments: true,
+	collapseWhitespace: true,
+	preserveLineBreaks: false,
+	conservativeCollapse: false,
+	collapseBooleanAttributes: true,
+	collapseInlineTagWhitespace: true,
+	removeCDATASectionsFromCDATA: true
+}
+```
+
 #### `module` - {string} (default: templates)
 
 > Provides the module name.

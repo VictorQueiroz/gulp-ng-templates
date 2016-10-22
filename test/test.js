@@ -8,9 +8,9 @@ describe('gulp-ng-templates', function () {
 	it('should build html templates', function (done) {
 		var file, contents;
 
-		contents = '<div class="row">' +
-			'<div class="large-12 columns"></div>' +
-		'</div>';
+		contents = `<div class="row">
+			<div class="large-12 columns"></div>
+		</div>`;
 
 		file = new File({
 			path: path.join(__dirname, 'template-1.html'),
@@ -21,8 +21,12 @@ describe('gulp-ng-templates', function () {
 		var stream = ngTemplates('moduleName', 'templates.js');
 
 		stream.on('data', function (file) {
+			const result = 'angular.module("moduleName", []).run(["$templateCache", ' +
+							'function($templateCache) {$templateCache.put("/template-1.html",' +
+							'"<div class=\\"row\\"><div class=\\"large-12 columns\\"></div></div>");}]);';
+
 			assert(!file.isStream());
-			assert.equal(file.contents.toString('utf-8'), 'angular.module("moduleName", []).run(["$templateCache", function($templateCache) {$templateCache.put("/template-1.html","<div class=\\"row\\"><div class=\\"large-12 columns\\"></div></div>");}]);');
+			assert.equal(file.contents.toString(), result);
 			assert.equal(file.path.replace(file.base + '/', ''), 'templates.js');
 			done();
 		});

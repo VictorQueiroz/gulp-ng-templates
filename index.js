@@ -1,11 +1,11 @@
+var _ = require('lodash');
 var es = require('event-stream');
 var path = require('path');
-var _ = require('lodash');
 var gutil = require('gulp-util');
 var concat = require('gulp-concat');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
-var htmlJsStr = require('js-string-escape');
+var minify = require('html-minifier').minify;
 
 function templateCache(options) {
   return es.map(function(file, callback) {
@@ -25,12 +25,9 @@ function templateCache(options) {
       url = url.replace(/\\/g, '/');
     }
 
-    var contents = file.contents;
+    var contents = minify(file.contents.toString(), options.htmlMinifier);
 
-    /**
-     * HTML to JavaScript
-     */
-    contents = htmlJsStr(contents);
+    contents = require('js-string-escape')(contents);
 
     file.contents = new Buffer(gutil.template(template, {
       url: url,
@@ -44,6 +41,16 @@ function templateCache(options) {
 
 module.exports = function(options, filename) {
   var defaults = {
+    htmlMinifier: {
+      minimize: true,
+      removeComments: true,
+      collapseWhitespace: true,
+      preserveLineBreaks: false,
+      conservativeCollapse: false,
+      collapseBooleanAttributes: true,
+      collapseInlineTagWhitespace: true,
+      removeCDATASectionsFromCDATA: true
+    },
     standalone: true,
     module: 'templates',
     filename: 'templates.min.js',
@@ -63,7 +70,7 @@ module.exports = function(options, filename) {
     options.filename = filename;
   }
 
-  options = _.extend({}, defaults, options);
+  options = _.defaults(options, defaults);
   
   return es.pipeline(
     templateCache(options),
