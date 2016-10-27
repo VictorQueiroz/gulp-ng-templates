@@ -25,7 +25,11 @@ function templateCache(options) {
       url = url.replace(/\\/g, '/');
     }
 
-    var contents = minify(file.contents.toString(), options.htmlMinifier);
+    var contents = file.contents.toString();
+
+    if(options.htmlMinifier) {
+      contents = minify(contents, options.htmlMinifier);
+    }
 
     contents = require('js-string-escape')(contents);
 

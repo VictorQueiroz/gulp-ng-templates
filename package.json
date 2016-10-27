@@ -1,6 +1,6 @@
 {
   "name": "gulp-ng-templates",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Build all of your angular templates in just one js file using $templateCache provider",
   "main": "index.js",
   "scripts": {
