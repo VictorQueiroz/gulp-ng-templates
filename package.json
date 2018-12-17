@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/VictorQueiroz/gulp-ng-templates",
   "dependencies": {
-    "event-stream": "^4.0.1",
+    "event-stream": "3.3.4",
     "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-footer": "^1.0.5",
