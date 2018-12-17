@@ -1,11 +1,15 @@
-gulp-ng-templates
-=================
+# gulp-ng-templates
 
-Build all of your angular templates in just one js file using $templateCache provider
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X7BZW864PRHSU)
+
+Build all of your angular templates in just one js file using `$templateCache` provider
 
 ## Installation
 ```
 npm install --save-dev gulp-ng-templates
+```
+```
+yarn add -D gulp-ng-templates
 ```
 
 ## Example 1
@@ -66,14 +70,12 @@ gulp-ng-templates ([options](#options))
 ##### Defaults
 ```js
 {
-	minimize: true,
 	removeComments: true,
 	collapseWhitespace: true,
 	preserveLineBreaks: false,
 	conservativeCollapse: false,
 	collapseBooleanAttributes: true,
-	collapseInlineTagWhitespace: true,
-	removeCDATASectionsFromCDATA: true
+	collapseInlineTagWhitespace: true
 }
 ```
 
