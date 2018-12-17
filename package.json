@@ -4,7 +4,7 @@
   "description": "Build all of your angular templates in just one js file using $templateCache provider",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/test.js"
+    "test": "npx sarg --require ts-node/register \"test/**/*.ts\""
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   "author": {
     "name": "Victor Queiroz",
     "email": "victorcqueirozg@gmail.com",
-    "twitter": "victor_queirozg"
+    "twitter": "_victorqueiroz_"
   },
   "license": "MIT",
   "bugs": {
@@ -30,19 +30,26 @@
   },
   "homepage": "https://github.com/VictorQueiroz/gulp-ng-templates",
   "dependencies": {
-    "event-stream": "^3.1.7",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
+    "event-stream": "^4.0.1",
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-footer": "^1.0.5",
-    "gulp-header": "^1.8.8",
-    "gulp-util": "^3.0.1",
-    "html-minifier": "^3.1.0",
+    "gulp-header": "^2.0.7",
+    "html-minifier": "^3.5.21",
     "js-string-escape": "^1.0.1",
-    "lodash": "^3.7.0",
-    "path": "^0.4.9"
+    "lodash.template": "^4.4.0"
   },
   "devDependencies": {
-    "mocha": "^1.21.4",
-    "vinyl": "^0.4.3"
+    "@types/event-stream": "^3.3.34",
+    "@types/gulp-concat": "^0.0.32",
+    "@types/html-minifier": "^3.5.2",
+    "@types/lodash.template": "^4.4.4",
+    "@types/node": "^10.12.15",
+    "@types/vinyl": "^2.0.2",
+    "sarg": "^2.0.11",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.2.2",
+    "vinyl": "^2.2.0"
   }
 }
