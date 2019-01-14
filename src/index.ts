@@ -53,7 +53,7 @@ function templateCache(options: NgTemplatesOptions) {
     });
 }
 
-export default function(inputOptions?: string | Partial<NgTemplatesOptions>, filename?: string) {
+module.exports = function(inputOptions?: string | Partial<NgTemplatesOptions>, filename?: string) {
     let options: NgTemplatesOptions = {
         htmlMinifier: {
             removeComments: true,
